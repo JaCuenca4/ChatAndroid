@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Vista.LoginActivity"/>
-        <activity android:name=".Vista.RegistroActivity" />
-        <activity android:name=".Vista.MainActivity">
+        <activity android:name=".Vista.MainActivity"></activity>
+        <activity android:name=".Vista.LoginActivity" android:parentActivityName=".Vista.StartActivity" />
+        <activity android:name=".Vista.RegistroActivity" android:parentActivityName=".Vista.StartActivity"/>
+        <activity android:name=".Vista.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

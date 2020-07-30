@@ -28,15 +28,16 @@
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/username"
+            android:id="@+id/correoLogin"
+            android:inputType="textEmailAddress"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
-            android:hint="Nombre de usuario"/>
+            android:hint="Correo"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
+            android:id="@+id/passwordLogin"
             android:inputType="textPassword"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"

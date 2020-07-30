@@ -1,6 +1,6 @@
 package com.example.chat.Interfaces;
 
-public interface InterfacesRegistro {
+public interface InterfacesLogin {
 
     interface Vista{
         void findElement();
@@ -8,13 +8,12 @@ public interface InterfacesRegistro {
     }
 
     interface Presentador{
-        void solicitarRegistro(String username, String email, String password);
+        void solicitarLogin(String email, String password);
         void mostrarInicio();
     }
 
     interface Modelo{
-        void registrar(String username, String email, String password);
+        void login(String email, String password);
         void concederAcceso();
     }
-
 }

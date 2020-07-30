@@ -10,11 +10,16 @@ public class ModeloRegistro implements InterfacesRegistro.Modelo {
 
     public ModeloRegistro(InterfacesRegistro.Presentador presentador) {
         this.presentador = presentador;
-        this.operador = new OperacionesFirebase();
+        this.operador = new OperacionesFirebase(this);
     }
 
     @Override
-    public boolean Registrar(String username, String email, String password) {
-        return operador.registro(username, email, password);
+    public void registrar(String username, String email, String password) {
+        operador.registro(username, email, password);
+    }
+
+    @Override
+    public void concederAcceso() {
+        presentador.mostrarInicio();
     }
 }

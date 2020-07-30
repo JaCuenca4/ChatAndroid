@@ -2,6 +2,9 @@ package com.example.chat.Clases;
 
 import androidx.annotation.NonNull;
 
+import com.example.chat.Interfaces.InterfacesLogin;
+import com.example.chat.Interfaces.InterfacesRegistro;
+import com.example.chat.Modelo.ModeloRegistro;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -16,12 +19,24 @@ public class OperacionesFirebase {
 
     FirebaseAuth auth;
     DatabaseReference reference;
-    boolean result = false;
+    boolean resultRegister = false;
+    boolean resultLogin = false;
+    InterfacesRegistro.Modelo modeloRegistro;
+    InterfacesLogin.Modelo modeloLogin;
 
-    public OperacionesFirebase() {
+    public OperacionesFirebase(InterfacesRegistro.Modelo modelo) {
+        auth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference();
+        this.modeloRegistro = modelo;
     }
 
-    public boolean registro(final String username, String email, String pass){
+    public OperacionesFirebase(InterfacesLogin.Modelo modelo) {
+        auth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference();
+        this.modeloLogin = modelo;
+    }
+
+    public void registro(final String username, String email, String pass){
         auth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -39,12 +54,22 @@ public class OperacionesFirebase {
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    result = true;
+                                    modeloRegistro.concederAcceso();
                                 }
                             });
                         }
                     }
                 });
-        return result;
+    }
+
+    public void login(String email, String pass){
+        auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    modeloLogin.concederAcceso();
+                }
+            }
+        });
     }
 }

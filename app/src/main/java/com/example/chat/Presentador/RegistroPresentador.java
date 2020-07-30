@@ -14,7 +14,12 @@ public class RegistroPresentador implements InterfacesRegistro.Presentador {
     }
 
     @Override
-    public boolean solicitarRegistro(String username, String email, String password) {
-       return modelo.Registrar(username, email, password);
+    public void solicitarRegistro(String username, String email, String password) {
+       modelo.registrar(username, email, password);
+    }
+
+    @Override
+    public void mostrarInicio() {
+        vista.desplegarInicio();
     }
 }
