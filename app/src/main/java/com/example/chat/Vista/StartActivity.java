@@ -14,9 +14,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     Button login, registro;
     Firebase firebaseUser;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+    protected void onStart(){
+        super.onStart();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         //Chequear si el usuario es nulo
         if(firebaseUser != null){
@@ -24,6 +23,13 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
             finish();
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start);
+
         findElement();
     }
 
