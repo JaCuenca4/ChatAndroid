@@ -12,11 +12,18 @@ import com.example.chat.R;
 public class StartActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button login, registro;
-
+    Firebase firebaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        //Chequear si el usuario es nulo
+        if(firebaseUser != null){
+            Intent intent = new Intent( packageContext StartActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
         findElement();
     }
 
