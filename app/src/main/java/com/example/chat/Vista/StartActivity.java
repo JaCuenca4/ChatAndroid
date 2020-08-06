@@ -7,29 +7,30 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.chat.Interfaces.InterfacesStart;
+import com.example.chat.Presentador.StartPresentador;
 import com.example.chat.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class StartActivity extends AppCompatActivity implements View.OnClickListener {
+public class StartActivity extends AppCompatActivity implements View.OnClickListener, InterfacesStart.Vista {
 
     Button login, registro;
-    Firebase firebaseUser;
+
+    InterfacesStart.Presentador presentador;
+
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        //Chequear si el usuario es nulo
-        if(firebaseUser != null){
-            Intent intent = new Intent( packageContext StartActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+
+        presentador = new StartPresentador(this);
+        verificarSesion();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-
         findElement();
     }
 
@@ -45,11 +46,24 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    @Override
     public void findElement(){
         login = findViewById(R.id.login);
         registro = findViewById(R.id.registrar);
 
         login.setOnClickListener(this);
         registro.setOnClickListener(this);
+    }
+
+    @Override
+    public void verificarSesion(){
+        presentador.verificarSesion();
+    }
+
+    @Override
+    public void desplegarInicio() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

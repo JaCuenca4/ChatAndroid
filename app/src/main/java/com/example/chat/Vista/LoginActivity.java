@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.chat.Interfaces.InterfacesLogin;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity implements InterfacesLogin.
     MaterialEditText email, password;
     Button btn_login;
     LoginPresentador presentador;
+    TextView forgot_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class LoginActivity extends AppCompatActivity implements InterfacesLogin.
         password = findViewById(R.id.passwordLogin);
         btn_login = findViewById(R.id.btn_ingresar);
         btn_login.setOnClickListener(this);
+        forgot_password = findViewById(R.id.forgot_password);
+        forgot_password.setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +69,8 @@ public class LoginActivity extends AppCompatActivity implements InterfacesLogin.
                     presentador.solicitarLogin(email.getText().toString(), password.getText().toString());
                 }
                 break;
+            case R.id.forgot_password:
+                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
         }
     }
 }
