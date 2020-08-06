@@ -29,15 +29,29 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Users fragment.
+ */
 public class UsersFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<User> mUsers;
 
+    /**
+     * The Search users.
+     */
     EditText search_users;
 
 
+    /**
+     * On create view view.
+     *
+     * @param inflater           the inflater
+     * @param container          the container
+     * @param savedInstanceState the saved instance state
+     * @return the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

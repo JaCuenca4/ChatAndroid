@@ -13,12 +13,27 @@ import com.example.chat.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * The type Start activity.
+ */
 public class StartActivity extends AppCompatActivity implements View.OnClickListener, InterfacesStart.Vista {
 
-    Button login, registro;
+    /**
+     * The Login.
+     */
+    Button login, /**
+     * The Registro.
+     */
+    registro;
 
+    /**
+     * The Presentador.
+     */
     InterfacesStart.Presentador presentador;
 
+    /**
+     * On start.
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -26,6 +41,11 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         verificarSesion();
     }
 
+    /**
+     * On create.
+     *
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

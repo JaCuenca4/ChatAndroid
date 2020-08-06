@@ -19,13 +19,36 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.w3c.dom.Text;
 
+/**
+ * The type Login activity.
+ */
 public class LoginActivity extends AppCompatActivity implements InterfacesLogin.Vista, View.OnClickListener {
 
-    MaterialEditText email, password;
+    /**
+     * The Email.
+     */
+    MaterialEditText email, /**
+     * The Password.
+     */
+    password;
+    /**
+     * The Btn login.
+     */
     Button btn_login;
+    /**
+     * The Presentador.
+     */
     LoginPresentador presentador;
+    /**
+     * The Forgot password.
+     */
     TextView forgot_password;
 
+    /**
+     * On create.
+     *
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

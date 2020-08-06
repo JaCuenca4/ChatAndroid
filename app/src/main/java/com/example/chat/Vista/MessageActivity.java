@@ -46,32 +46,85 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Message activity.
+ */
 public class MessageActivity extends AppCompatActivity implements InterfacesMessage.Vista, View.OnClickListener {
 
+    /**
+     * The Profile image.
+     */
     CircleImageView profile_image;
+    /**
+     * The Username.
+     */
     TextView username;
 
+    /**
+     * The Firebase user.
+     */
     FirebaseUser firebaseUser;
+    /**
+     * The Reference.
+     */
     DatabaseReference reference;
 
+    /**
+     * The Btn send.
+     */
     ImageButton btn_send;
+    /**
+     * The Text send.
+     */
     EditText text_send;
 
+    /**
+     * The Intent.
+     */
     Intent intent;
+    /**
+     * The Userid.
+     */
     String userid;
 
+    /**
+     * The Message adapter.
+     */
     MessageAdapter messageAdapter;
+    /**
+     * The M chat.
+     */
     List<Chat> mChat;
+    /**
+     * The Recycler view.
+     */
     RecyclerView recyclerView;
 
+    /**
+     * The Presentador.
+     */
     InterfacesMessage.Presentador presentador;
 
+    /**
+     * The Seen listener.
+     */
     ValueEventListener seenListener;
 
+    /**
+     * The Api service.
+     */
     APIService apiService;
 
+    /**
+     * The Notify.
+     */
     boolean notify = false;
 
+    /**
+     * On create.
+     *
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,6 +243,11 @@ public class MessageActivity extends AppCompatActivity implements InterfacesMess
         });
     }
 
+    /**
+     * Notificacion.
+     *
+     * @param message the message
+     */
     public void notificacion(String message){
         final String msg = message;
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
@@ -241,12 +299,18 @@ public class MessageActivity extends AppCompatActivity implements InterfacesMess
         reference.updateChildren(hashMap);
     }
 
+    /**
+     * On resume.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         status("online");
     }
 
+    /**
+     * On pause.
+     */
     @Override
     protected void onPause() {
         super.onPause();

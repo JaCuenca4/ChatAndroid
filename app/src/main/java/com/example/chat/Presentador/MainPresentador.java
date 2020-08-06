@@ -4,11 +4,25 @@ import com.example.chat.Clases.User;
 import com.example.chat.Interfaces.InterfacesMain;
 import com.example.chat.Modelo.ModeloMain;
 
+/**
+ * The type Main presentador.
+ */
 public class MainPresentador implements InterfacesMain.Presentador {
 
+    /**
+     * The Vista.
+     */
     InterfacesMain.Vista vista;
+    /**
+     * The Modelo.
+     */
     InterfacesMain.Modelo modelo;
 
+    /**
+     * Instantiates a new Main presentador.
+     *
+     * @param vista the vista
+     */
     public MainPresentador(InterfacesMain.Vista vista){
         this.vista = vista;
         this.modelo = new ModeloMain( this );

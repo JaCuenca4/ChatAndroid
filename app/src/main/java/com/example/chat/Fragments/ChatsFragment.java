@@ -29,6 +29,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Chats fragment.
+ */
 public class ChatsFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -36,11 +39,25 @@ public class ChatsFragment extends Fragment {
     private UserAdapter userAdapter;
     private List<User> mUsers;
 
+    /**
+     * The Firebase user.
+     */
     FirebaseUser firebaseUser;
+    /**
+     * The Reference.
+     */
     DatabaseReference reference;
 
     private List<String> usersList;
 
+    /**
+     * On create view view.
+     *
+     * @param inflater           the inflater
+     * @param container          the container
+     * @param savedInstanceState the saved instance state
+     * @return the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

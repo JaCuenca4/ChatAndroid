@@ -34,16 +34,42 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity implements InterfacesMain.Vista {
 
+    /**
+     * The Profile image.
+     */
     CircleImageView profile_image;
+    /**
+     * The Username.
+     */
     TextView username;
 
+    /**
+     * The Presentador.
+     */
     InterfacesMain.Presentador presentador;
+    /**
+     * The Tab loyout.
+     */
     TabLayout tabLoyout;
+    /**
+     * The View pager.
+     */
     ViewPager viewPager;
+    /**
+     * The View pager adapter.
+     */
     ViewPagerAdapter viewPagerAdapter;
 
+    /**
+     * On create.
+     *
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +84,24 @@ public class MainActivity extends AppCompatActivity implements InterfacesMain.Vi
         solicitarUsuario();
     }
 
+    /**
+     * On create options menu boolean.
+     *
+     * @param menu the menu
+     * @return the boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
+    /**
+     * On options item selected boolean.
+     *
+     * @param item the item
+     * @return the boolean
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -110,33 +148,64 @@ public class MainActivity extends AppCompatActivity implements InterfacesMain.Vi
         finish();
     }
 
+    /**
+     * The type View pager adapter.
+     */
     class ViewPagerAdapter extends FragmentPagerAdapter{
 
         private ArrayList<Fragment> fragments;
         private ArrayList<String> titles;
 
+        /**
+         * Instantiates a new View pager adapter.
+         *
+         * @param fm the fm
+         */
         ViewPagerAdapter(FragmentManager fm){
             super(fm);
             this.fragments = new ArrayList<>();
             this.titles = new ArrayList<>();
         }
 
+        /**
+         * Gets item.
+         *
+         * @param position the position
+         * @return the item
+         */
         @NonNull
         @Override
         public Fragment getItem(int position) {
             return fragments.get(position);
         }
 
+        /**
+         * Gets count.
+         *
+         * @return the count
+         */
         @Override
         public int getCount() {
             return fragments.size();
         }
 
+        /**
+         * Add fragment.
+         *
+         * @param fragment the fragment
+         * @param title    the title
+         */
         public void addFragment(Fragment fragment, String title){
             fragments.add(fragment);
             titles.add(title);
         }
 
+        /**
+         * Gets page title.
+         *
+         * @param position the position
+         * @return the page title
+         */
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
@@ -154,12 +223,18 @@ public class MainActivity extends AppCompatActivity implements InterfacesMain.Vi
         reference.updateChildren(hashMap);
     }
 
+    /**
+     * On resume.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         status("online");
     }
 
+    /**
+     * On pause.
+     */
     @Override
     protected void onPause() {
         super.onPause();

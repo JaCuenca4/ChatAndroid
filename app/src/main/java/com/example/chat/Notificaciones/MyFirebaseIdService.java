@@ -7,8 +7,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
+/**
+ * The type My firebase id service.
+ */
 public class MyFirebaseIdService extends FirebaseInstanceIdService {
 
+    /**
+     * On token refresh.
+     */
     @Override
     public void onTokenRefresh() {
         super.onTokenRefresh();

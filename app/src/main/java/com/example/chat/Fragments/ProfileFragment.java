@@ -41,19 +41,48 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.app.Activity.RESULT_OK;
 
+/**
+ * The type Profile fragment.
+ */
 public class ProfileFragment extends Fragment {
 
+    /**
+     * The Image profile.
+     */
     CircleImageView image_profile;
+    /**
+     * The Username.
+     */
     TextView username;
 
+    /**
+     * The Reference.
+     */
     DatabaseReference reference;
+    /**
+     * The Firebase user.
+     */
     FirebaseUser firebaseUser;
 
+    /**
+     * The Storage reference.
+     */
     StorageReference storageReference;
+    /**
+     * The constant IMAGE_REQUEST.
+     */
     public static final int IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageTask uploadTask;
 
+    /**
+     * On create view view.
+     *
+     * @param inflater           the inflater
+     * @param container          the container
+     * @param savedInstanceState the saved instance state
+     * @return the view
+     */
     @Override
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
@@ -158,6 +187,13 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    /**
+     * On activity result.
+     *
+     * @param requestCode the request code
+     * @param resultCode  the result code
+     * @param data        the data
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

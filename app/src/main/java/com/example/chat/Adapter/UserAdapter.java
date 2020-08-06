@@ -26,19 +26,39 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+/**
+ * The type User adapter.
+ */
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private Context mContext;
     private List<User> mUsers;
     private boolean ischat;
 
+    /**
+     * The The last message.
+     */
     String theLastMessage;
 
+    /**
+     * Instantiates a new User adapter.
+     *
+     * @param mContext the m context
+     * @param mUsers   the m users
+     * @param ischat   the ischat
+     */
     public UserAdapter(Context mContext, List<User> mUsers, boolean ischat){
         this.mUsers = mUsers;
         this.mContext = mContext;
         this.ischat = ischat;
     }
 
+    /**
+     * On create view holder view holder.
+     *
+     * @param parent   the parent
+     * @param viewType the view type
+     * @return the view holder
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,6 +66,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return new UserAdapter.ViewHolder(view);
     }
 
+    /**
+     * On bind view holder.
+     *
+     * @param holder   the holder
+     * @param position the position
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final User user = mUsers.get(position);
@@ -86,18 +112,37 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         });
     }
 
+    /**
+     * Gets item count.
+     *
+     * @return the item count
+     */
     @Override
     public int getItemCount() {
         return mUsers.size();
     }
 
+    /**
+     * The type View holder.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder{
+        /**
+         * The Username.
+         */
         public TextView username;
+        /**
+         * The Profile image.
+         */
         public ImageView profile_image;
         private ImageView img_on;
         private ImageView img_off;
         private TextView last_msg;
 
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param itemView the item view
+         */
         public ViewHolder(View itemView){
             super(itemView);
 

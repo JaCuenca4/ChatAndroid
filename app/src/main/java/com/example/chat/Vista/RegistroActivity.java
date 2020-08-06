@@ -15,13 +15,36 @@ import com.example.chat.Presentador.RegistroPresentador;
 import com.example.chat.R;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+/**
+ * The type Registro activity.
+ */
 public class RegistroActivity extends AppCompatActivity implements InterfacesRegistro.Vista, View.OnClickListener {
 
-    //Variables
-    MaterialEditText username, email, password;
+    /**
+     * The Username.
+     */
+//Variables
+    MaterialEditText username, /**
+     * The Email.
+     */
+    email, /**
+     * The Password.
+     */
+    password;
+    /**
+     * The Btn registrar.
+     */
     Button btn_registrar;
+    /**
+     * The Presentador.
+     */
     RegistroPresentador presentador;
 
+    /**
+     * On create.
+     *
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

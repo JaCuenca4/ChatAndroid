@@ -22,22 +22,48 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
+/**
+ * The type Message adapter.
+ */
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
+    /**
+     * The constant MSG_TYPE_LEFT.
+     */
     public static final int MSG_TYPE_LEFT = 0;
+    /**
+     * The constant MSG_TYPE_RIGHT.
+     */
     public static final int MSG_TYPE_RIGHT = 1;
     private Context mContext;
     private List<Chat> mChat;
     private String imageurl;
 
+    /**
+     * The Firebase user.
+     */
     FirebaseUser firebaseUser;
 
+    /**
+     * Instantiates a new Message adapter.
+     *
+     * @param mContext the m context
+     * @param mChat    the m chat
+     * @param imageurl the imageurl
+     */
     public MessageAdapter(Context mContext, List<Chat> mChat, String imageurl){
         this.mChat = mChat;
         this.mContext = mContext;
         this.imageurl = imageurl;
     }
 
+    /**
+     * On create view holder message adapter . view holder.
+     *
+     * @param parent   the parent
+     * @param viewType the view type
+     * @return the message adapter . view holder
+     */
     @NonNull
     @Override
     public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,6 +76,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
+    /**
+     * On bind view holder.
+     *
+     * @param holder   the holder
+     * @param position the position
+     */
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         Chat chat = mChat.get(position);
@@ -73,17 +105,39 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
+    /**
+     * Gets item count.
+     *
+     * @return the item count
+     */
     @Override
     public int getItemCount() {
         return mChat.size();
     }
 
+    /**
+     * The type View holder.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder{
+        /**
+         * The Show message.
+         */
         public TextView show_message;
+        /**
+         * The Profile image.
+         */
         public ImageView profile_image;
 
+        /**
+         * The Txt seen.
+         */
         public TextView txt_seen;
 
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param itemView the item view
+         */
         public ViewHolder(View itemView){
             super(itemView);
 
@@ -93,6 +147,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
+    /**
+     * Gets item view type.
+     *
+     * @param position the position
+     * @return the item view type
+     */
     @Override
     public int getItemViewType(int position) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();

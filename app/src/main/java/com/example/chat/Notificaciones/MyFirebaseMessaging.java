@@ -16,7 +16,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+/**
+ * The type My firebase messaging.
+ */
 public class MyFirebaseMessaging extends FirebaseMessagingService {
+    /**
+     * On message received.
+     *
+     * @param remoteMessage the remote message
+     */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);

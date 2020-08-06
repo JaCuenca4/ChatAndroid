@@ -7,11 +7,25 @@ import com.example.chat.Modelo.ModeloMessage;
 
 import java.util.List;
 
+/**
+ * The type Message presentador.
+ */
 public class MessagePresentador implements InterfacesMessage.Presentador{
 
+    /**
+     * The Vista.
+     */
     InterfacesMessage.Vista vista;
+    /**
+     * The Modelo.
+     */
     InterfacesMessage.Modelo modelo;
 
+    /**
+     * Instantiates a new Message presentador.
+     *
+     * @param vista the vista
+     */
     public MessagePresentador(InterfacesMessage.Vista vista){
         this.vista = vista;
         modelo = new ModeloMessage(this);

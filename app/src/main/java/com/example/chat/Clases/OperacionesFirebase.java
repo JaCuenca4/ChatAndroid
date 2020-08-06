@@ -26,47 +26,106 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * The type Operaciones firebase.
+ */
 public class OperacionesFirebase {
 
+    /**
+     * The Auth.
+     */
     FirebaseAuth auth;
+    /**
+     * The Firebase user.
+     */
     FirebaseUser firebaseUser;
+    /**
+     * The Reference.
+     */
     DatabaseReference reference;
+    /**
+     * The Modelo registro.
+     */
     InterfacesRegistro.Modelo modeloRegistro;
+    /**
+     * The Modelo login.
+     */
     InterfacesLogin.Modelo modeloLogin;
+    /**
+     * The Modelo start.
+     */
     InterfacesStart.Modelo modeloStart;
+    /**
+     * The Modelo main.
+     */
     InterfacesMain.Modelo modeloMain;
+    /**
+     * The Modelo message.
+     */
     InterfacesMessage.Modelo modeloMessage;
 
+    /**
+     * Instantiates a new Operaciones firebase.
+     *
+     * @param modelo the modelo
+     */
     public OperacionesFirebase(InterfacesRegistro.Modelo modelo) {
         auth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference();
         this.modeloRegistro = modelo;
     }
 
+    /**
+     * Instantiates a new Operaciones firebase.
+     *
+     * @param modelo the modelo
+     */
     public OperacionesFirebase(InterfacesLogin.Modelo modelo) {
         auth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference();
         this.modeloLogin = modelo;
     }
 
+    /**
+     * Instantiates a new Operaciones firebase.
+     *
+     * @param modelo the modelo
+     */
     public OperacionesFirebase(InterfacesStart.Modelo modelo){
         auth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference();
         this.modeloStart = modelo;
     }
 
+    /**
+     * Instantiates a new Operaciones firebase.
+     *
+     * @param modelo the modelo
+     */
     public OperacionesFirebase(InterfacesMain.Modelo modelo){
         auth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference();
         this.modeloMain = modelo;
     }
 
+    /**
+     * Instantiates a new Operaciones firebase.
+     *
+     * @param modelo the modelo
+     */
     public OperacionesFirebase(InterfacesMessage.Modelo modelo){
         auth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference();
         this.modeloMessage = modelo;
     }
 
+    /**
+     * Registro.
+     *
+     * @param username the username
+     * @param email    the email
+     * @param pass     the pass
+     */
     public void registro(final String username, String email, String pass){
         auth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -95,6 +154,12 @@ public class OperacionesFirebase {
                 });
     }
 
+    /**
+     * Login.
+     *
+     * @param email the email
+     * @param pass  the pass
+     */
     public void login(String email, String pass){
         auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -106,12 +171,18 @@ public class OperacionesFirebase {
         });
     }
 
+    /**
+     * Verificar sesion.
+     */
     public void verificarSesion(){
         if(firebaseUser != null){
             modeloStart.concederInicio();
         }
     }
 
+    /**
+     * Obtener usuario.
+     */
     public void obtenerUsuario(){
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
@@ -130,6 +201,11 @@ public class OperacionesFirebase {
         });
     }
 
+    /**
+     * Cargar chat.
+     *
+     * @param userid the userid
+     */
     public void cargarChat(String userid){
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
@@ -148,6 +224,12 @@ public class OperacionesFirebase {
         });
     }
 
+    /**
+     * Send message.
+     *
+     * @param receiver the receiver
+     * @param message  the message
+     */
     public void sendMessage(String receiver, String message){
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference();
@@ -160,6 +242,12 @@ public class OperacionesFirebase {
         reference.child("Chats").push().setValue(hashMap);
     }
 
+    /**
+     * Read messages.
+     *
+     * @param userid   the userid
+     * @param imageurl the imageurl
+     */
     public void readMessages(final String userid, final String imageurl){
         final List<Chat> mChat = new ArrayList<>();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -185,6 +273,9 @@ public class OperacionesFirebase {
         });
     }
 
+    /**
+     * Cerrar sesion.
+     */
     public void cerrarSesion() {
         FirebaseAuth.getInstance().signOut();
         modeloMain.permitirCerrarSesion();

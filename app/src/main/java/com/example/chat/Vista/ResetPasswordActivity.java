@@ -16,13 +16,30 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * The type Reset password activity.
+ */
 public class ResetPasswordActivity extends AppCompatActivity {
 
+    /**
+     * The Send email.
+     */
     EditText send_email;
+    /**
+     * The Btn reset.
+     */
     Button btn_reset;
 
+    /**
+     * The Firebase auth.
+     */
     FirebaseAuth firebaseAuth;
 
+    /**
+     * On create.
+     *
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

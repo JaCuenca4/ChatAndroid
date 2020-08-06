@@ -8,7 +8,16 @@ import retrofit2.http.Body;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
+/**
+ * The interface Api service.
+ */
 public interface APIService {
+    /**
+     * Send notification call.
+     *
+     * @param body the body
+     * @return the call
+     */
     @Headers(
             {
                     "Content-Type:application/json",
