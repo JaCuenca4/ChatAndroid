@@ -107,7 +107,6 @@ public class OperacionesFirebase {
     }
 
     public void verificarSesion(){
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser != null){
             modeloStart.concederInicio();
         }

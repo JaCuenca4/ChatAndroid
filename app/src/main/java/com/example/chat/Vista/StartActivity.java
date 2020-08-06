@@ -22,7 +22,6 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onStart() {
         super.onStart();
-
         presentador = new StartPresentador(this);
         verificarSesion();
     }

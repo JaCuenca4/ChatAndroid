@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements InterfacesMain.Vi
 
     @Override
     public void cerrar() {
-        startActivity(new Intent(this, StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        startActivity(new Intent(this, StartActivity.class));
         finish();
     }
 
